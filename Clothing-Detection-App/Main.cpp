@@ -1,5 +1,5 @@
 // Main.cpp : main project file.
-#include "CameraForm.h"
+#include "SelectDirectoryForm.h"
 using namespace ClothingDetectionApp;
 [STAThreadAttribute]
 int Main(array<System::String^>^ args)
@@ -8,6 +8,6 @@ int Main(array<System::String^>^ args)
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	// Create the main window and run it
-	Application::Run(gcnew CameraForm());
+	Application::Run(gcnew SelectDirectoryForm());
 	return 0;
 }

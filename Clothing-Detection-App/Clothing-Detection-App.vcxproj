@@ -117,10 +117,12 @@
   <ItemGroup>
     <ClCompile Include="CameraForm.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="SelectDirectoryForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -129,10 +131,16 @@
     <ClInclude Include="CameraForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SelectDirectoryForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CameraForm.resx">
       <DependentUpon>CameraForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectDirectoryForm.resx">
+      <DependentUpon>SelectDirectoryForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
