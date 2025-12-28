@@ -126,6 +126,7 @@ namespace ClothingDetectionApp {
 		// You can pass the selected path to CameraForm if needed
 		// cameraForm->DirectoryPath = SelectedDirectoryPath;
 		cameraForm->ShowDialog();
+		SelectDirectoryForm::Close();
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
