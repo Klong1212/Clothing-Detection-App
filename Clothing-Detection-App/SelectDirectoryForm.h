@@ -15,9 +15,13 @@ namespace ClothingDetectionApp {
 	public ref class SelectDirectoryForm : public System::Windows::Forms::Form
 	{
 	public:
+		// Global variable to store selected directory path
+		System::String^ SelectedDirectoryPath;
+
 		SelectDirectoryForm(void)
 		{
 			InitializeComponent();
+			SelectedDirectoryPath = "";
 			//
 			//TODO: Add the constructor code here
 			//
@@ -47,7 +51,7 @@ namespace ClothingDetectionApp {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -111,15 +115,19 @@ namespace ClothingDetectionApp {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			System::String^ selectedPath = folderBrowserDialog1->SelectedPath;
-			// Do something with the selected folder path
+			// Save to global variable
+			SelectedDirectoryPath = selectedPath;
 			PathName->Text = selectedPath;
+
 		}
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		CameraForm^ cameraForm = gcnew CameraForm();
+		// You can pass the selected path to CameraForm if needed
+		// cameraForm->DirectoryPath = SelectedDirectoryPath;
 		cameraForm->ShowDialog();
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-};
+	};
 }
