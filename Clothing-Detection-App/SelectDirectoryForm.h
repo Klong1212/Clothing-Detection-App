@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+#include "CameraForm.h"
 namespace ClothingDetectionApp {
 
 	using namespace System;
@@ -116,6 +116,8 @@ namespace ClothingDetectionApp {
 		}
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		CameraForm^ cameraForm = gcnew CameraForm();
+		cameraForm->ShowDialog();
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
