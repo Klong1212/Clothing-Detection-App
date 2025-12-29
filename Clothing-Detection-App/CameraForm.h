@@ -250,17 +250,16 @@ namespace ClothingDetectionApp {
 		}
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (System::String::IsNullOrEmpty(this->DirectoryPath)) {
+		MessageBox::Show("Directory Path is not set! Please take a photo first.", "Warning");
+		return;
+	}
 
-	InventoryForm^ invForm = gcnew InventoryForm();
+	InventoryForm^ invForm = gcnew InventoryForm(this->DirectoryPath);
 
-	// 2. ส่งค่า DirectoryPath ไปใส่ในตัวแปรของ InventoryForm โดยตรง
-	invForm->DirectoryPath = this->DirectoryPath;
-
-	//timer1->Stop(); // หยุดกล้อง
-
+	// timer1->Stop(); //  ถ้าต้องการหยุดกล้อง
 	invForm->ShowDialog();
-
-	//timer1->Start(); // เปิดกล้องใหม่
+	// timer1->Start(); // ถ้าต้องการเริ่มกล้องใหม่
 }
 };
 }

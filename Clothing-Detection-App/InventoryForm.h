@@ -8,117 +8,178 @@ namespace ClothingDetectionApp {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
-	/// <summary>
-	/// Summary for InventoryForm
-	/// </summary>
 	public ref class InventoryForm : public System::Windows::Forms::Form
 	{
 	public:
+		// ???????????? path ??????? public
 		System::String^ DirectoryPath;
-		InventoryForm(void)
+
+		// Constructor ?????? Path
+		InventoryForm(System::String^ path)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
+			// ?????? path ?????????
+			this->DirectoryPath = path;
+
+			// ????????????????
+			LoadImages();
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~InventoryForm()
 		{
-			if (components)
-			{
-				delete components;
-			}
+			if (components) delete components;
 		}
+
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 	private: System::Windows::Forms::Panel^ topPanel;
-	private: System::Windows::Forms::Label^ Status;
-	private: System::Windows::Forms::Button^ Refresh;
-
-
-
-	protected:
-
-	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		System::ComponentModel::Container ^components;
+	private: System::Windows::Forms::Button^ btnRefresh;
+	private: System::Windows::Forms::Label^ lblStatus;
+	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		void InitializeComponent(void)
-		{
-			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->topPanel = (gcnew System::Windows::Forms::Panel());
-			this->Refresh = (gcnew System::Windows::Forms::Button());
-			this->Status = (gcnew System::Windows::Forms::Label());
-			this->topPanel->SuspendLayout();
-			this->SuspendLayout();
-			// 
-			// flowLayoutPanel1
-			// 
-			this->flowLayoutPanel1->AutoScroll = true;
-			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->flowLayoutPanel1->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(638, 472);
-			this->flowLayoutPanel1->TabIndex = 0;
-			// 
-			// topPanel
-			// 
-			this->topPanel->BackColor = System::Drawing::SystemColors::ScrollBar;
-			this->topPanel->Controls->Add(this->Status);
-			this->topPanel->Controls->Add(this->Refresh);
-			this->topPanel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->topPanel->Location = System::Drawing::Point(0, 0);
-			this->topPanel->Name = L"topPanel";
-			this->topPanel->Size = System::Drawing::Size(638, 28);
-			this->topPanel->TabIndex = 0;
-			this->topPanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &InventoryForm::panel1_Paint);
-			// 
-			// Refresh
-			// 
-			this->Refresh->Location = System::Drawing::Point(245, 0);
-			this->Refresh->Name = L"Refresh";
-			this->Refresh->Size = System::Drawing::Size(75, 23);
-			this->Refresh->TabIndex = 0;
-			this->Refresh->Text = L"button1";
-			this->Refresh->UseVisualStyleBackColor = true;
-			// 
-			// Status
-			// 
-			this->Status->AutoSize = true;
-			this->Status->Location = System::Drawing::Point(464, 9);
-			this->Status->Name = L"Status";
-			this->Status->Size = System::Drawing::Size(44, 16);
-			this->Status->TabIndex = 1;
-			this->Status->Text = L"label1";
-			// 
-			// InventoryForm
-			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(638, 472);
-			this->Controls->Add(this->topPanel);
-			this->Controls->Add(this->flowLayoutPanel1);
-			this->Name = L"InventoryForm";
-			this->Text = L"InventoryForm";
-			this->topPanel->ResumeLayout(false);
-			this->topPanel->PerformLayout();
-			this->ResumeLayout(false);
+		   void InitializeComponent(void)
+		   {
+			   this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			   this->topPanel = (gcnew System::Windows::Forms::Panel());
+			   this->btnRefresh = (gcnew System::Windows::Forms::Button());
+			   this->lblStatus = (gcnew System::Windows::Forms::Label());
+			   this->topPanel->SuspendLayout();
+			   this->SuspendLayout();
 
-		}
+			   // topPanel
+			   this->topPanel->Controls->Add(this->lblStatus);
+			   this->topPanel->Controls->Add(this->btnRefresh);
+			   this->topPanel->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->topPanel->Height = 60;
+			   this->topPanel->BackColor = System::Drawing::Color::WhiteSmoke;
+			   this->topPanel->Name = L"topPanel";
+			   this->topPanel->TabIndex = 1;
+
+			   // btnRefresh
+			   this->btnRefresh->Location = System::Drawing::Point(12, 12);
+			   this->btnRefresh->Name = L"btnRefresh";
+			   this->btnRefresh->Size = System::Drawing::Size(100, 35);
+			   this->btnRefresh->TabIndex = 0;
+			   this->btnRefresh->Text = L"Refresh";
+			   this->btnRefresh->UseVisualStyleBackColor = true;
+			   this->btnRefresh->Click += gcnew System::EventHandler(this, &InventoryForm::btnRefresh_Click);
+
+			   // lblStatus
+			   this->lblStatus->AutoSize = true;
+			   this->lblStatus->Location = System::Drawing::Point(130, 20);
+			   this->lblStatus->Name = L"lblStatus";
+			   this->lblStatus->Size = System::Drawing::Size(70, 16);
+			   this->lblStatus->TabIndex = 1;
+			   this->lblStatus->Text = L"Loading...";
+
+			   // flowLayoutPanel1
+			   this->flowLayoutPanel1->AutoScroll = true;
+			   this->flowLayoutPanel1->BackColor = System::Drawing::Color::White;
+			   this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->flowLayoutPanel1->Location = System::Drawing::Point(0, 60);
+			   this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
+			   this->flowLayoutPanel1->Padding = System::Windows::Forms::Padding(10);
+			   this->flowLayoutPanel1->Size = System::Drawing::Size(800, 540);
+			   this->flowLayoutPanel1->TabIndex = 0;
+
+			   // InventoryForm
+			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			   this->ClientSize = System::Drawing::Size(800, 600);
+			   this->Controls->Add(this->flowLayoutPanel1);
+			   this->Controls->Add(this->topPanel);
+			   this->Name = L"InventoryForm";
+			   this->Text = L"My Gallery";
+			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
+			   this->topPanel->ResumeLayout(false);
+			   this->topPanel->PerformLayout();
+			   this->ResumeLayout(false);
+		   }
 #pragma endregion
-	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
+
+	private:
+		void LoadImages() {
+			// ??? System:: ?????? String ???????? Error Ambiguous
+			if (System::String::IsNullOrEmpty(this->DirectoryPath) || !Directory::Exists(this->DirectoryPath)) {
+				lblStatus->Text = "Path not set or not found!";
+				return;
+			}
+
+			this->flowLayoutPanel1->Controls->Clear();
+			lblStatus->Text = "Loading...";
+			this->Update();
+
+			int count = 0;
+			// ??? System:: ?????? String
+			array<System::String^>^ files = Directory::GetFiles(this->DirectoryPath);
+
+			for each (System::String ^ file in files) {
+				System::String^ ext = Path::GetExtension(file)->ToLower();
+
+				if (ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".bmp") {
+					try {
+						Panel^ itemPanel = gcnew Panel();
+						itemPanel->Size = System::Drawing::Size(160, 150);
+						itemPanel->Margin = System::Windows::Forms::Padding(5);
+
+						PictureBox^ pb = gcnew PictureBox();
+						pb->Size = System::Drawing::Size(160, 120);
+						pb->Dock = DockStyle::Top;
+						pb->SizeMode = PictureBoxSizeMode::Zoom;
+						pb->Cursor = Cursors::Hand;
+						pb->Tag = file;
+
+						FileStream^ fs = gcnew FileStream(file, FileMode::Open, FileAccess::Read);
+						Image^ original = Image::FromStream(fs);
+						pb->Image = gcnew Bitmap(original, pb->Width, pb->Height);
+
+						delete original;
+						fs->Close();
+						delete fs;
+
+						pb->Click += gcnew EventHandler(this, &InventoryForm::OnImageClick);
+
+						Label^ lbl = gcnew Label();
+						lbl->Text = Path::GetFileName(file);
+						lbl->Dock = DockStyle::Bottom;
+						lbl->TextAlign = ContentAlignment::MiddleCenter;
+						lbl->Height = 30;
+
+						itemPanel->Controls->Add(lbl);
+						itemPanel->Controls->Add(pb);
+
+						this->flowLayoutPanel1->Controls->Add(itemPanel);
+						count++;
+					}
+					// ??? System:: ?????? Exception
+					catch (System::Exception^ ex) {
+						Console::WriteLine("Error: " + ex->Message);
+					}
+				}
+			}
+			lblStatus->Text = "Found " + count + " images.";
+		}
+
+		System::Void btnRefresh_Click(System::Object^ sender, System::EventArgs^ e) {
+			LoadImages();
+		}
+
+		void OnImageClick(System::Object^ sender, System::EventArgs^ e) {
+			PictureBox^ pb = safe_cast<PictureBox^>(sender);
+			if (pb->Tag != nullptr) {
+				System::String^ filePath = safe_cast<System::String^>(pb->Tag);
+				try {
+					// ??? System::Diagnostics:: ???????? Ambiguous ???????? Process
+					System::Diagnostics::Process::Start(filePath);
+				}
+				catch (System::Exception^ ex) {
+					MessageBox::Show("Cannot open image: " + ex->Message);
+				}
+			}
+		}
 	};
 }
