@@ -137,11 +137,12 @@ namespace ClothingDetectionApp {
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->ClientSize = System::Drawing::Size(1194, 519);
 			this->Controls->Add(this->splitContainer1);
+			this->MaximizeBox = false;
 			this->Name = L"CameraForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"CameraForm";
-			this->Load += gcnew System::EventHandler(this, &CameraForm::CameraForm_Load);
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &CameraForm::CameraForm_FormClosing);
+			this->Load += gcnew System::EventHandler(this, &CameraForm::CameraForm_Load);
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
