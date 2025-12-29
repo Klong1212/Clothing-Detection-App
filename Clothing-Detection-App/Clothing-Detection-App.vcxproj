@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CameraForm.cpp" />
+    <ClCompile Include="InventoryForm.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SelectDirectoryForm.cpp" />
   </ItemGroup>
@@ -131,6 +132,9 @@
     <ClInclude Include="CameraForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="InventoryForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SelectDirectoryForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -138,6 +142,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CameraForm.resx">
       <DependentUpon>CameraForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryForm.resx">
+      <DependentUpon>InventoryForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectDirectoryForm.resx">
       <DependentUpon>SelectDirectoryForm.h</DependentUpon>

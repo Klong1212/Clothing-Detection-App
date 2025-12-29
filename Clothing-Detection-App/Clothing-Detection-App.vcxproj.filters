@@ -24,12 +24,18 @@
     <ClCompile Include="SelectDirectoryForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InventoryForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SelectDirectoryForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

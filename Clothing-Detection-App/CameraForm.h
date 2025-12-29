@@ -2,6 +2,7 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <msclr/marshal_cppstd.h>
+#include "InventoryForm.h"
 namespace ClothingDetectionApp {
 
 	using namespace System;
@@ -249,6 +250,17 @@ namespace ClothingDetectionApp {
 		}
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	InventoryForm^ invForm = gcnew InventoryForm();
+
+	// 2. ส่งค่า DirectoryPath ไปใส่ในตัวแปรของ InventoryForm โดยตรง
+	invForm->DirectoryPath = this->DirectoryPath;
+
+	//timer1->Stop(); // หยุดกล้อง
+
+	invForm->ShowDialog();
+
+	//timer1->Start(); // เปิดกล้องใหม่
 }
 };
 }
