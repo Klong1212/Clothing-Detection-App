@@ -101,12 +101,19 @@ namespace ClothingDetectionApp {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoSize = true;
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->ClientSize = System::Drawing::Size(372, 150);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->EnterAppButton);
 			this->Controls->Add(this->PathName);
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->MaximizeBox = false;
 			this->Name = L"SelectDirectoryForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SelectDirectoryForm";
+			this->UseWaitCursor = true;
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
