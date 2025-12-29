@@ -122,6 +122,10 @@ namespace ClothingDetectionApp {
 		}
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (SelectedDirectoryPath == "") {
+			MessageBox::Show("please select a folder", "Warning", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
 		CameraForm^ cameraForm = gcnew CameraForm();
 		// You can pass the selected path to CameraForm if needed
 		// cameraForm->DirectoryPath = SelectedDirectoryPath;
