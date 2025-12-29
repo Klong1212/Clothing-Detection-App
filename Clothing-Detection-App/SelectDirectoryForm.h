@@ -88,7 +88,7 @@ namespace ClothingDetectionApp {
 			this->EnterAppButton->Name = L"EnterAppButton";
 			this->EnterAppButton->Size = System::Drawing::Size(75, 23);
 			this->EnterAppButton->TabIndex = 1;
-			this->EnterAppButton->Text = L"ตกลง";
+			this->EnterAppButton->Text = L"Confirm";
 			this->EnterAppButton->UseVisualStyleBackColor = true;
 			this->EnterAppButton->UseWaitCursor = true;
 			this->EnterAppButton->Click += gcnew System::EventHandler(this, &SelectDirectoryForm::button2_Click);
@@ -100,7 +100,7 @@ namespace ClothingDetectionApp {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(136, 16);
 			this->label1->TabIndex = 2;
-			this->label1->Text = L"โปลดเลือกโฟลเดอร์เก็บข้อมูล";
+			this->label1->Text = L"Please select a folder";
 			this->label1->UseWaitCursor = true;
 			this->label1->Click += gcnew System::EventHandler(this, &SelectDirectoryForm::label1_Click);
 			// 
