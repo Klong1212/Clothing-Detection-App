@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "CameraForm.h"
 namespace ClothingDetectionApp {
 
