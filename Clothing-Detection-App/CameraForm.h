@@ -34,17 +34,23 @@ namespace ClothingDetectionApp {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::ToolStripContainer^ toolStripContainer1;
-	protected:
 	private: System::Windows::Forms::SplitContainer^ splitContainer1;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::ComponentModel::IContainer^ components;
+	protected:
+
+	protected:
+
+
+
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -53,32 +59,17 @@ namespace ClothingDetectionApp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->toolStripContainer1 = (gcnew System::Windows::Forms::ToolStripContainer());
+			this->components = (gcnew System::ComponentModel::Container());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->toolStripContainer1->ContentPanel->SuspendLayout();
-			this->toolStripContainer1->SuspendLayout();
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// toolStripContainer1
-			// 
-			// 
-			// toolStripContainer1.ContentPanel
-			// 
-			this->toolStripContainer1->ContentPanel->Controls->Add(this->splitContainer1);
-			this->toolStripContainer1->ContentPanel->Size = System::Drawing::Size(1194, 494);
-			this->toolStripContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->toolStripContainer1->Location = System::Drawing::Point(0, 0);
-			this->toolStripContainer1->Name = L"toolStripContainer1";
-			this->toolStripContainer1->Size = System::Drawing::Size(1194, 519);
-			this->toolStripContainer1->TabIndex = 0;
-			this->toolStripContainer1->Text = L"toolStripContainer1";
 			// 
 			// splitContainer1
 			// 
@@ -93,40 +84,42 @@ namespace ClothingDetectionApp {
 			// splitContainer1.Panel2
 			// 
 			this->splitContainer1->Panel2->Controls->Add(this->button1);
-			this->splitContainer1->Size = System::Drawing::Size(1194, 494);
-			this->splitContainer1->SplitterDistance = 973;
+			this->splitContainer1->Size = System::Drawing::Size(1194, 519);
+			this->splitContainer1->SplitterDistance = 815;
 			this->splitContainer1->TabIndex = 0;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(148, 213);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(114, 91);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pictureBox1->Location = System::Drawing::Point(0, 0);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(973, 494);
+			this->pictureBox1->Size = System::Drawing::Size(815, 519);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			// 
-			// button1
+			// timer1
 			// 
-			this->button1->Location = System::Drawing::Point(55, 202);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(105, 88);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &CameraForm::button1_Click);
+			this->timer1->Tick += gcnew System::EventHandler(this, &CameraForm::timer1_Tick);
 			// 
 			// CameraForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->ClientSize = System::Drawing::Size(1194, 519);
-			this->Controls->Add(this->toolStripContainer1);
+			this->Controls->Add(this->splitContainer1);
 			this->Name = L"CameraForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"CameraForm";
-			this->toolStripContainer1->ContentPanel->ResumeLayout(false);
-			this->toolStripContainer1->ResumeLayout(false);
-			this->toolStripContainer1->PerformLayout();
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
@@ -138,5 +131,7 @@ namespace ClothingDetectionApp {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
