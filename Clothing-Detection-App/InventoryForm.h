@@ -45,38 +45,13 @@ namespace ClothingDetectionApp {
 		   {
 			   this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			   this->topPanel = (gcnew System::Windows::Forms::Panel());
-			   this->btnRefresh = (gcnew System::Windows::Forms::Button());
 			   this->lblStatus = (gcnew System::Windows::Forms::Label());
+			   this->btnRefresh = (gcnew System::Windows::Forms::Button());
 			   this->topPanel->SuspendLayout();
 			   this->SuspendLayout();
-
-			   // topPanel
-			   this->topPanel->Controls->Add(this->lblStatus);
-			   this->topPanel->Controls->Add(this->btnRefresh);
-			   this->topPanel->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->topPanel->Height = 60;
-			   this->topPanel->BackColor = System::Drawing::Color::WhiteSmoke;
-			   this->topPanel->Name = L"topPanel";
-			   this->topPanel->TabIndex = 1;
-
-			   // btnRefresh
-			   this->btnRefresh->Location = System::Drawing::Point(12, 12);
-			   this->btnRefresh->Name = L"btnRefresh";
-			   this->btnRefresh->Size = System::Drawing::Size(100, 35);
-			   this->btnRefresh->TabIndex = 0;
-			   this->btnRefresh->Text = L"Refresh";
-			   this->btnRefresh->UseVisualStyleBackColor = true;
-			   this->btnRefresh->Click += gcnew System::EventHandler(this, &InventoryForm::btnRefresh_Click);
-
-			   // lblStatus
-			   this->lblStatus->AutoSize = true;
-			   this->lblStatus->Location = System::Drawing::Point(130, 20);
-			   this->lblStatus->Name = L"lblStatus";
-			   this->lblStatus->Size = System::Drawing::Size(70, 16);
-			   this->lblStatus->TabIndex = 1;
-			   this->lblStatus->Text = L"Loading...";
-
+			   // 
 			   // flowLayoutPanel1
+			   // 
 			   this->flowLayoutPanel1->AutoScroll = true;
 			   this->flowLayoutPanel1->BackColor = System::Drawing::Color::White;
 			   this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -85,19 +60,51 @@ namespace ClothingDetectionApp {
 			   this->flowLayoutPanel1->Padding = System::Windows::Forms::Padding(10);
 			   this->flowLayoutPanel1->Size = System::Drawing::Size(800, 540);
 			   this->flowLayoutPanel1->TabIndex = 0;
-
+			   // 
+			   // topPanel
+			   // 
+			   this->topPanel->BackColor = System::Drawing::Color::WhiteSmoke;
+			   this->topPanel->Controls->Add(this->lblStatus);
+			   this->topPanel->Controls->Add(this->btnRefresh);
+			   this->topPanel->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->topPanel->Location = System::Drawing::Point(0, 0);
+			   this->topPanel->Name = L"topPanel";
+			   this->topPanel->Size = System::Drawing::Size(800, 60);
+			   this->topPanel->TabIndex = 1;
+			   // 
+			   // lblStatus
+			   // 
+			   this->lblStatus->AutoSize = true;
+			   this->lblStatus->Location = System::Drawing::Point(130, 20);
+			   this->lblStatus->Name = L"lblStatus";
+			   this->lblStatus->Size = System::Drawing::Size(65, 16);
+			   this->lblStatus->TabIndex = 1;
+			   this->lblStatus->Text = L"Loading...";
+			   // 
+			   // btnRefresh
+			   // 
+			   this->btnRefresh->Location = System::Drawing::Point(12, 12);
+			   this->btnRefresh->Name = L"btnRefresh";
+			   this->btnRefresh->Size = System::Drawing::Size(100, 35);
+			   this->btnRefresh->TabIndex = 0;
+			   this->btnRefresh->Text = L"Refresh";
+			   this->btnRefresh->UseVisualStyleBackColor = true;
+			   this->btnRefresh->Click += gcnew System::EventHandler(this, &InventoryForm::btnRefresh_Click);
+			   // 
 			   // InventoryForm
+			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(800, 600);
 			   this->Controls->Add(this->flowLayoutPanel1);
 			   this->Controls->Add(this->topPanel);
 			   this->Name = L"InventoryForm";
-			   this->Text = L"My Gallery";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
+			   this->Text = L"My Gallery";
 			   this->topPanel->ResumeLayout(false);
 			   this->topPanel->PerformLayout();
 			   this->ResumeLayout(false);
+
 		   }
 #pragma endregion
 
