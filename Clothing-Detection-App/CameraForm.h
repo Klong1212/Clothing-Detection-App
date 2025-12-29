@@ -15,9 +15,11 @@ namespace ClothingDetectionApp {
 	public ref class CameraForm : public System::Windows::Forms::Form
 	{
 	public:
+		System::String^ DirectoryPath;
 		CameraForm(void)
 		{
 			InitializeComponent();
+			DirectoryPath = "";
 			//
 			//TODO: Add the constructor code here
 			//

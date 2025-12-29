@@ -136,6 +136,7 @@ namespace ClothingDetectionApp {
 		CameraForm^ cameraForm = gcnew CameraForm();
 		// You can pass the selected path to CameraForm if needed
 		// cameraForm->DirectoryPath = SelectedDirectoryPath;
+		cameraForm->DirectoryPath = SelectedDirectoryPath;
 		cameraForm->ShowDialog();
 		SelectDirectoryForm::Close();
 	}
