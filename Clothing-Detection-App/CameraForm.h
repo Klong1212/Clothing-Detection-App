@@ -55,6 +55,7 @@ namespace ClothingDetectionApp {
 	private: System::ComponentModel::IContainer^ components;
 	private: Bitmap^ bmp;
 	private: VideoCapture* capture = nullptr;
+	private: System::Windows::Forms::Button^ button2;
 	private: Mat* currentFrame = nullptr;
 	protected:
 
@@ -81,6 +82,7 @@ namespace ClothingDetectionApp {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
@@ -100,6 +102,7 @@ namespace ClothingDetectionApp {
 			// 
 			// splitContainer1.Panel2
 			// 
+			this->splitContainer1->Panel2->Controls->Add(this->button2);
 			this->splitContainer1->Panel2->Controls->Add(this->button1);
 			this->splitContainer1->Size = System::Drawing::Size(1194, 519);
 			this->splitContainer1->SplitterDistance = 815;
@@ -129,6 +132,17 @@ namespace ClothingDetectionApp {
 			// 
 			this->timer1->Interval = 30;
 			this->timer1->Tick += gcnew System::EventHandler(this, &CameraForm::timer1_Tick);
+			// 
+			// button2
+			// 
+			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->button2->Location = System::Drawing::Point(99, 329);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(192, 138);
+			this->button2->TabIndex = 1;
+			this->button2->Text = L"IMAGE";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &CameraForm::button2_Click);
 			// 
 			// CameraForm
 			// 
@@ -234,5 +248,7 @@ namespace ClothingDetectionApp {
 			MessageBox::Show("Failed to save image!\n" + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
