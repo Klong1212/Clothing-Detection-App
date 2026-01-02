@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CameraForm.cpp" />
+    <ClCompile Include="DetectForm.cpp" />
     <ClCompile Include="InventoryForm.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SelectDirectoryForm.cpp" />
@@ -125,6 +126,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -132,6 +134,7 @@
     <ClInclude Include="CameraForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="DetectForm.h" />
     <ClInclude Include="InventoryForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -143,6 +146,7 @@
     <EmbeddedResource Include="CameraForm.resx">
       <DependentUpon>CameraForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetectForm.resx" />
     <EmbeddedResource Include="InventoryForm.resx">
       <DependentUpon>InventoryForm.h</DependentUpon>
     </EmbeddedResource>

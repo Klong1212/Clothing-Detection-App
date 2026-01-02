@@ -27,6 +27,9 @@
     <ClCompile Include="InventoryForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DetectForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraForm.h">
@@ -38,5 +41,13 @@
     <ClInclude Include="InventoryForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DetectForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DetectForm.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
