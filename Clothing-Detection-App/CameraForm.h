@@ -258,7 +258,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	InventoryForm^ invForm = gcnew InventoryForm(this->DirectoryPath);
 
 	// timer1->Stop(); //  ถ้าต้องการหยุดกล้อง
-	invForm->ShowDialog();
+	invForm->Show();
 	// timer1->Start(); // ถ้าต้องการเริ่มกล้องใหม่
 }
 };
