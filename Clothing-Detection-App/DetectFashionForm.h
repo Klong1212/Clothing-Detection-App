@@ -11,6 +11,8 @@ namespace ClothingDetectionApp {
 	using namespace System::IO;
 	using namespace System::Net::Http;
 	using namespace System::Threading::Tasks;
+	using System::String;
+	using System::Exception;
 
 	/// <summary>
 	/// Summary for DetectFashionForm
