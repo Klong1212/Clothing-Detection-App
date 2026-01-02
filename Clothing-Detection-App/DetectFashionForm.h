@@ -13,12 +13,12 @@ namespace ClothingDetectionApp {
 	using namespace System::Threading::Tasks;
 
 	/// <summary>
-	/// Summary for DetectForm
+	/// Summary for DetectFashionForm
 	/// </summary>
-	public ref class DetectForm : public System::Windows::Forms::Form
+	public ref class DetectFashionForm : public System::Windows::Forms::Form
 	{
 	public:
-		DetectForm(void)
+		DetectFashionForm(void)
 		{
 			InitializeComponent();
 			//
@@ -30,7 +30,7 @@ namespace ClothingDetectionApp {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~DetectForm()
+		~DetectFashionForm()
 		{
 			if (components)
 			{
@@ -69,38 +69,40 @@ namespace ClothingDetectionApp {
 			   // 
 			   // btnUpload
 			   // 
-			   this->btnUpload->Location = System::Drawing::Point(278, 30);
+			   this->btnUpload->Location = System::Drawing::Point(339, 46);
 			   this->btnUpload->Name = L"btnUpload";
 			   this->btnUpload->Size = System::Drawing::Size(192, 37);
 			   this->btnUpload->TabIndex = 0;
 			   this->btnUpload->Text = L"Upload & Process";
 			   this->btnUpload->UseVisualStyleBackColor = true;
-			   this->btnUpload->Click += gcnew System::EventHandler(this, &DetectForm::btnUpload_Click);
+			   this->btnUpload->Click += gcnew System::EventHandler(this, &DetectFashionForm::btnUpload_Click);
 			   // 
 			   // pbOriginal
 			   // 
 			   this->pbOriginal->Location = System::Drawing::Point(101, 216);
 			   this->pbOriginal->Name = L"pbOriginal";
 			   this->pbOriginal->Size = System::Drawing::Size(241, 253);
+			   this->pbOriginal->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pbOriginal->TabIndex = 1;
 			   this->pbOriginal->TabStop = false;
-			   this->pbOriginal->Click += gcnew System::EventHandler(this, &DetectForm::pbOriginal_Click);
+			   this->pbOriginal->Click += gcnew System::EventHandler(this, &DetectFashionForm::pbOriginal_Click);
 			   // 
 			   // pbResult
 			   // 
 			   this->pbResult->Location = System::Drawing::Point(502, 216);
 			   this->pbResult->Name = L"pbResult";
 			   this->pbResult->Size = System::Drawing::Size(241, 253);
+			   this->pbResult->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pbResult->TabIndex = 2;
 			   this->pbResult->TabStop = false;
-			   this->pbResult->Click += gcnew System::EventHandler(this, &DetectForm::pbResult_Click);
+			   this->pbResult->Click += gcnew System::EventHandler(this, &DetectFashionForm::pbResult_Click);
 			   // 
 			   // backgroundWorker1
 			   // 
-			   this->backgroundWorker1->DoWork += gcnew System::ComponentModel::DoWorkEventHandler(this, &DetectForm::backgroundWorker1_DoWork);
-			   this->backgroundWorker1->RunWorkerCompleted += gcnew System::ComponentModel::RunWorkerCompletedEventHandler(this, &DetectForm::backgroundWorker1_RunWorkerCompleted);
+			   this->backgroundWorker1->DoWork += gcnew System::ComponentModel::DoWorkEventHandler(this, &DetectFashionForm::backgroundWorker1_DoWork);
+			   this->backgroundWorker1->RunWorkerCompleted += gcnew System::ComponentModel::RunWorkerCompletedEventHandler(this, &DetectFashionForm::backgroundWorker1_RunWorkerCompleted);
 			   // 
-			   // DetectForm
+			   // DetectFashionForm
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -108,15 +110,15 @@ namespace ClothingDetectionApp {
 			   this->Controls->Add(this->pbResult);
 			   this->Controls->Add(this->pbOriginal);
 			   this->Controls->Add(this->btnUpload);
-			   this->Name = L"DetectForm";
-			   this->Text = L"DetectForm";
+			   this->Name = L"DetectFashionForm";
+			   this->Text = L"DetectFashionForm";
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbOriginal))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbResult))->EndInit();
 			   this->ResumeLayout(false);
 
 		   }
 #pragma endregion
-	// 1. ปุ่มกด Upload: แค่สั่งให้ Worker เริ่มทำงาน
+		   // 1. ปุ่มกด Upload: แค่สั่งให้ Worker เริ่มทำงาน
 	private: System::Void btnUpload_Click(System::Object^ sender, System::EventArgs^ e) {
 		OpenFileDialog^ openFileDialog = gcnew OpenFileDialog();
 		openFileDialog->Filter = "Image Files|*.jpg;*.jpeg;*.png;";
@@ -140,7 +142,7 @@ namespace ClothingDetectionApp {
 	}
 	private: System::Void pbResult_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	// 2. DoWork: ทำงานหนักๆ (เชื่อมต่อ Server) ตรงนี้ *ห้ามแตะ UI*
+		   // 2. DoWork: ทำงานหนักๆ (เชื่อมต่อ Server) ตรงนี้ *ห้ามแตะ UI*
 	private: System::Void backgroundWorker1_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e) {
 		// รับ filePath ที่ส่งมา
 		String^ filePath = safe_cast<String^>(e->Argument);
@@ -173,7 +175,7 @@ namespace ClothingDetectionApp {
 			e->Result = ex;
 		}
 	}
-	// 3. RunWorkerCompleted: งานเสร็จแล้ว อัปเดตหน้าจอตรงนี้
+		   // 3. RunWorkerCompleted: งานเสร็จแล้ว อัปเดตหน้าจอตรงนี้
 	private: System::Void backgroundWorker1_RunWorkerCompleted(System::Object^ sender, System::ComponentModel::RunWorkerCompletedEventArgs^ e) {
 		// ตรวจสอบว่าผลลัพธ์เป็น Error หรือ รูปภาพ
 		if (e->Result->GetType() == Exception::typeid) {
