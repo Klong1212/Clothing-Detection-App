@@ -71,7 +71,7 @@ namespace ClothingDetectionApp {
 			   // 
 			   // btnUpload
 			   // 
-			   this->btnUpload->Location = System::Drawing::Point(339, 46);
+			   this->btnUpload->Location = System::Drawing::Point(473, 56);
 			   this->btnUpload->Name = L"btnUpload";
 			   this->btnUpload->Size = System::Drawing::Size(192, 37);
 			   this->btnUpload->TabIndex = 0;
@@ -81,9 +81,9 @@ namespace ClothingDetectionApp {
 			   // 
 			   // pbOriginal
 			   // 
-			   this->pbOriginal->Location = System::Drawing::Point(101, 216);
+			   this->pbOriginal->Location = System::Drawing::Point(53, 123);
 			   this->pbOriginal->Name = L"pbOriginal";
-			   this->pbOriginal->Size = System::Drawing::Size(241, 253);
+			   this->pbOriginal->Size = System::Drawing::Size(478, 451);
 			   this->pbOriginal->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pbOriginal->TabIndex = 1;
 			   this->pbOriginal->TabStop = false;
@@ -91,9 +91,9 @@ namespace ClothingDetectionApp {
 			   // 
 			   // pbResult
 			   // 
-			   this->pbResult->Location = System::Drawing::Point(502, 216);
+			   this->pbResult->Location = System::Drawing::Point(596, 123);
 			   this->pbResult->Name = L"pbResult";
-			   this->pbResult->Size = System::Drawing::Size(241, 253);
+			   this->pbResult->Size = System::Drawing::Size(465, 451);
 			   this->pbResult->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pbResult->TabIndex = 2;
 			   this->pbResult->TabStop = false;
@@ -108,7 +108,7 @@ namespace ClothingDetectionApp {
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(830, 566);
+			   this->ClientSize = System::Drawing::Size(1110, 627);
 			   this->Controls->Add(this->pbResult);
 			   this->Controls->Add(this->pbOriginal);
 			   this->Controls->Add(this->btnUpload);
