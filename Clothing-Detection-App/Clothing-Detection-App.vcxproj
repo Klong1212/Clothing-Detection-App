@@ -78,11 +78,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\opencv\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world4120d.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\opencv\build\x64\vc16\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\opencv\build\x64\vc16\lib;C:\opencv\build\x64\vc16\lib</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
@@ -109,13 +109,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_world4120d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\opencv\build\x64\vc16\lib;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CameraForm.cpp" />
+    <ClCompile Include="DetectFashionForm.cpp" />
     <ClCompile Include="InventoryForm.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SelectDirectoryForm.cpp" />
@@ -125,11 +128,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="DetectFashionForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="InventoryForm.h">
@@ -142,6 +149,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CameraForm.resx">
       <DependentUpon>CameraForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetectFashionForm.resx">
+      <DependentUpon>DetectFashionForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryForm.resx">
       <DependentUpon>InventoryForm.h</DependentUpon>

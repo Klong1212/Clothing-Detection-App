@@ -1,4 +1,5 @@
 #pragma once
+#include "DetectFashionForm.h"
 
 namespace ClothingDetectionApp {
 
