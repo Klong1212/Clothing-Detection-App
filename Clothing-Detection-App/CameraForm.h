@@ -57,7 +57,7 @@ namespace ClothingDetectionApp {
 	private: Bitmap^ bmp;
 	private: VideoCapture* capture = nullptr;
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
+
 	private: Mat* currentFrame = nullptr;
 	protected:
 
@@ -85,7 +85,6 @@ namespace ClothingDetectionApp {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
@@ -105,7 +104,6 @@ namespace ClothingDetectionApp {
 			// 
 			// splitContainer1.Panel2
 			// 
-			this->splitContainer1->Panel2->Controls->Add(this->button3);
 			this->splitContainer1->Panel2->Controls->Add(this->button2);
 			this->splitContainer1->Panel2->Controls->Add(this->button1);
 			this->splitContainer1->Size = System::Drawing::Size(1194, 519);
@@ -147,16 +145,6 @@ namespace ClothingDetectionApp {
 			// 
 			this->timer1->Interval = 30;
 			this->timer1->Tick += gcnew System::EventHandler(this, &CameraForm::timer1_Tick);
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(148, 56);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(114, 66);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"Test Detect";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &CameraForm::button3_Click);
 			// 
 			// CameraForm
 			// 
@@ -273,10 +261,6 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	// timer1->Stop(); //  ถ้าต้องการหยุดกล้อง
 	invForm->Show();
 	// timer1->Start(); // ถ้าต้องการเริ่มกล้องใหม่
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	DetectFashionForm^ DeForm = gcnew DetectFashionForm();
-	DeForm->ShowDialog();
 }
 };
 }

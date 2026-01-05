@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "DetectFashionForm.h"
 
 namespace ClothingDetectionApp {
@@ -177,7 +177,8 @@ namespace ClothingDetectionApp {
 						fs->Close();
 						delete fs;
 
-						pb->Click += gcnew EventHandler(this, &InventoryForm::OnImageClick);
+						//pb->Click += gcnew EventHandler(this, &InventoryForm::OnImageClick);
+						pb->DoubleClick += gcnew EventHandler(this, &InventoryForm::OnImageDoubleClick);
 						pb->MouseDown += gcnew MouseEventHandler(this, &InventoryForm::OnImageMouseDown);
 						pb->MouseMove += gcnew MouseEventHandler(this, &InventoryForm::OnImageMouseMove);
 
@@ -195,6 +196,24 @@ namespace ClothingDetectionApp {
 				}
 			}
 			lblStatus->Text = "Found " + count + " images.";
+		}
+
+		void OnImageDoubleClick(System::Object^ sender, System::EventArgs^ e) {
+			PictureBox^ pb = safe_cast<PictureBox^>(sender);
+			if (pb->Tag != nullptr) {
+				System::String^ filePath = safe_cast<System::String^>(pb->Tag);
+
+				// สร้าง Instance ของ Form ที่ต้องการเปิด (DetectFashionForm)
+				// สมมติว่า DetectFashionForm มี Constructor ที่รับ path ของรูปภาพ
+				// หาก DetectFashionForm ของคุณไม่มี Constructor นี้ คุณอาจต้องแก้เป็น set property แทน
+				DetectFashionForm^ detectForm = gcnew DetectFashionForm(filePath);
+
+				// สั่งให้แสดงผลแบบ Dialog (ผู้ใช้ต้องปิดหน้านี้ก่อนถึงจะกลับมาหน้าเดิมได้)
+				detectForm->ShowDialog();
+
+				// หรือถ้าอยากเปิดแบบไม่ต้องรอปิด (Non-modal) ให้ใช้:
+				// detectForm->Show();
+			}
 		}
 
 		// --- Logic Drag & Drop (???????????) ---

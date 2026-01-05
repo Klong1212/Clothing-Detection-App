@@ -19,13 +19,18 @@ namespace ClothingDetectionApp {
 	/// </summary>
 	public ref class DetectFashionForm : public System::Windows::Forms::Form
 	{
+	private:
+		String^ currentFilePath;
 	public:
-		DetectFashionForm(void)
+		// ต้องมี Constructor นี้เพิ่มเข้ามา
+		DetectFashionForm(System::String^ imagePath)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			this->currentFilePath = imagePath;
+			// นำ imagePath ไปใช้งาน เช่น แสดงรูปใน PictureBox
+			if (System::IO::File::Exists(imagePath)) {
+				this->pbOriginal->Image = Image::FromFile(imagePath);
+			}
 		}
 
 	protected:
@@ -75,7 +80,7 @@ namespace ClothingDetectionApp {
 			   this->btnUpload->Name = L"btnUpload";
 			   this->btnUpload->Size = System::Drawing::Size(192, 37);
 			   this->btnUpload->TabIndex = 0;
-			   this->btnUpload->Text = L"Upload & Process";
+			   this->btnUpload->Text = L"Process";
 			   this->btnUpload->UseVisualStyleBackColor = true;
 			   this->btnUpload->Click += gcnew System::EventHandler(this, &DetectFashionForm::btnUpload_Click);
 			   // 
@@ -122,23 +127,20 @@ namespace ClothingDetectionApp {
 #pragma endregion
 		   // 1. ปุ่มกด Upload: แค่สั่งให้ Worker เริ่มทำงาน
 	private: System::Void btnUpload_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpenFileDialog^ openFileDialog = gcnew OpenFileDialog();
-		openFileDialog->Filter = "Image Files|*.jpg;*.jpeg;*.png;";
 
-		if (openFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			String^ filePath = openFileDialog->FileName;
-
-			// โชว์รูปต้นฉบับ
-			pbOriginal->Image = Image::FromFile(filePath);
-			pbResult->Image = nullptr;
-
-			// ปรับปุ่ม
-			btnUpload->Enabled = false;
-			btnUpload->Text = "Processing...";
-
-			// เริ่มทำงานเบื้องหลัง (ส่ง filePath ไปด้วย)
-			backgroundWorker1->RunWorkerAsync(filePath);
+		// เช็คก่อนว่ามีไฟล์ส่งมาหรือไม่
+		if (String::IsNullOrEmpty(this->currentFilePath) || !File::Exists(this->currentFilePath)) {
+			MessageBox::Show("No image received from Inventory!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
 		}
+
+		// เตรียมหน้าจอ
+		pbResult->Image = nullptr;
+		btnUpload->Enabled = false;
+		btnUpload->Text = "Processing...";
+
+		// ส่ง path เดิมไปประมวลผลเลย (ไม่ต้องเปิด OpenFileDialog)
+		backgroundWorker1->RunWorkerAsync(this->currentFilePath);
 	}
 	private: System::Void pbOriginal_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
