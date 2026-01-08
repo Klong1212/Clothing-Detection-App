@@ -137,8 +137,8 @@ namespace ClothingDetectionApp {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			this->pictureBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)));
 			this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pictureBox1->Location = System::Drawing::Point(10, 10);
 			this->pictureBox1->Name = L"pictureBox1";
@@ -146,11 +146,12 @@ namespace ClothingDetectionApp {
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &CameraForm::pictureBox1_Click);
 			// 
 			// controlPanel
 			// 
-			this->controlPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(48)));
+			this->controlPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
+				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->controlPanel->Controls->Add(this->timerPanel);
 			this->controlPanel->Controls->Add(this->lblTitle);
 			this->controlPanel->Controls->Add(this->lblStatus);
@@ -181,7 +182,7 @@ namespace ClothingDetectionApp {
 			this->rb10sec->ForeColor = System::Drawing::Color::White;
 			this->rb10sec->Location = System::Drawing::Point(170, 40);
 			this->rb10sec->Name = L"rb10sec";
-			this->rb10sec->Size = System::Drawing::Size(75, 27);
+			this->rb10sec->Size = System::Drawing::Size(78, 27);
 			this->rb10sec->TabIndex = 3;
 			this->rb10sec->Text = L"10 sec";
 			this->rb10sec->UseVisualStyleBackColor = true;
@@ -194,7 +195,7 @@ namespace ClothingDetectionApp {
 			this->rb5sec->ForeColor = System::Drawing::Color::White;
 			this->rb5sec->Location = System::Drawing::Point(90, 40);
 			this->rb5sec->Name = L"rb5sec";
-			this->rb5sec->Size = System::Drawing::Size(67, 27);
+			this->rb5sec->Size = System::Drawing::Size(69, 27);
 			this->rb5sec->TabIndex = 2;
 			this->rb5sec->Text = L"5 sec";
 			this->rb5sec->UseVisualStyleBackColor = true;
@@ -208,7 +209,7 @@ namespace ClothingDetectionApp {
 			this->rb0sec->ForeColor = System::Drawing::Color::White;
 			this->rb0sec->Location = System::Drawing::Point(10, 40);
 			this->rb0sec->Name = L"rb0sec";
-			this->rb0sec->Size = System::Drawing::Size(67, 27);
+			this->rb0sec->Size = System::Drawing::Size(69, 27);
 			this->rb0sec->TabIndex = 1;
 			this->rb0sec->TabStop = true;
 			this->rb0sec->Text = L"0 sec";
@@ -219,11 +220,11 @@ namespace ClothingDetectionApp {
 			// 
 			this->lblTimerTitle->AutoSize = true;
 			this->lblTimerTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Bold));
-			this->lblTimerTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(100)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblTimerTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(100)), static_cast<System::Int32>(static_cast<System::Byte>(180)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->lblTimerTitle->Location = System::Drawing::Point(5, 10);
 			this->lblTimerTitle->Name = L"lblTimerTitle";
-			this->lblTimerTitle->Size = System::Drawing::Size(138, 23);
+			this->lblTimerTitle->Size = System::Drawing::Size(141, 23);
 			this->lblTimerTitle->TabIndex = 0;
 			this->lblTimerTitle->Text = L"⏱️ Timer Delay:";
 			// 
@@ -234,7 +235,7 @@ namespace ClothingDetectionApp {
 			this->lblTitle->ForeColor = System::Drawing::Color::White;
 			this->lblTitle->Location = System::Drawing::Point(20, 15);
 			this->lblTitle->Name = L"lblTitle";
-			this->lblTitle->Size = System::Drawing::Size(150, 28);
+			this->lblTitle->Size = System::Drawing::Size(161, 28);
 			this->lblTitle->TabIndex = 3;
 			this->lblTitle->Text = L"📷 Camera Live";
 			// 
@@ -243,39 +244,19 @@ namespace ClothingDetectionApp {
 			this->lblStatus->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left));
 			this->lblStatus->AutoSize = true;
 			this->lblStatus->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9));
-			this->lblStatus->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(150)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(150)), static_cast<System::Int32>(static_cast<System::Byte>(150)));
+			this->lblStatus->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(150)), static_cast<System::Int32>(static_cast<System::Byte>(150)),
+				static_cast<System::Int32>(static_cast<System::Byte>(150)));
 			this->lblStatus->Location = System::Drawing::Point(20, 90);
 			this->lblStatus->Name = L"lblStatus";
-			this->lblStatus->Size = System::Drawing::Size(120, 20);
+			this->lblStatus->Size = System::Drawing::Size(122, 20);
 			this->lblStatus->TabIndex = 2;
 			this->lblStatus->Text = L"Ready to capture";
-			// 
-			// btnCapture
-			// 
-			this->btnCapture->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
-			this->btnCapture->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(122)), static_cast<System::Int32>(static_cast<System::Byte>(204)));
-			this->btnCapture->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->btnCapture->FlatAppearance->BorderSize = 0;
-			this->btnCapture->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnCapture->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11, System::Drawing::FontStyle::Bold));
-			this->btnCapture->ForeColor = System::Drawing::Color::White;
-			this->btnCapture->Location = System::Drawing::Point(475, 45);
-			this->btnCapture->Name = L"btnCapture";
-			this->btnCapture->Size = System::Drawing::Size(120, 50);
-			this->btnCapture->TabIndex = 0;
-			this->btnCapture->Text = L"📸 Capture";
-			this->btnCapture->UseVisualStyleBackColor = false;
-			this->btnCapture->Click += gcnew System::EventHandler(this, &CameraForm::btnCapture_Click);
-			this->btnCapture->MouseEnter += gcnew System::EventHandler(this, &CameraForm::btnCapture_MouseEnter);
-			this->btnCapture->MouseLeave += gcnew System::EventHandler(this, &CameraForm::btnCapture_MouseLeave);
 			// 
 			// btnGallery
 			// 
 			this->btnGallery->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
-			this->btnGallery->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(70)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(70)), static_cast<System::Int32>(static_cast<System::Byte>(75)));
+			this->btnGallery->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(70)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(75)));
 			this->btnGallery->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->btnGallery->FlatAppearance->BorderSize = 0;
 			this->btnGallery->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -291,6 +272,26 @@ namespace ClothingDetectionApp {
 			this->btnGallery->MouseEnter += gcnew System::EventHandler(this, &CameraForm::btnGallery_MouseEnter);
 			this->btnGallery->MouseLeave += gcnew System::EventHandler(this, &CameraForm::btnGallery_MouseLeave);
 			// 
+			// btnCapture
+			// 
+			this->btnCapture->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+			this->btnCapture->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(122)),
+				static_cast<System::Int32>(static_cast<System::Byte>(204)));
+			this->btnCapture->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnCapture->FlatAppearance->BorderSize = 0;
+			this->btnCapture->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnCapture->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11, System::Drawing::FontStyle::Bold));
+			this->btnCapture->ForeColor = System::Drawing::Color::White;
+			this->btnCapture->Location = System::Drawing::Point(475, 45);
+			this->btnCapture->Name = L"btnCapture";
+			this->btnCapture->Size = System::Drawing::Size(120, 50);
+			this->btnCapture->TabIndex = 0;
+			this->btnCapture->Text = L"📸 Capture";
+			this->btnCapture->UseVisualStyleBackColor = false;
+			this->btnCapture->Click += gcnew System::EventHandler(this, &CameraForm::btnCapture_Click);
+			this->btnCapture->MouseEnter += gcnew System::EventHandler(this, &CameraForm::btnCapture_MouseEnter);
+			this->btnCapture->MouseLeave += gcnew System::EventHandler(this, &CameraForm::btnCapture_MouseLeave);
+			// 
 			// timer1
 			// 
 			this->timer1->Interval = 30;
@@ -305,8 +306,8 @@ namespace ClothingDetectionApp {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)));
 			this->ClientSize = System::Drawing::Size(1200, 820);
 			this->Controls->Add(this->cameraPanel);
 			this->Controls->Add(this->controlPanel);
@@ -509,5 +510,7 @@ namespace ClothingDetectionApp {
 	private: System::Void btnGallery_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		btnGallery->BackColor = Color::FromArgb(70, 70, 75);
 	}
+private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

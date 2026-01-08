@@ -79,8 +79,8 @@ namespace ClothingDetectionApp {
 			// 
 			// btnBrowse
 			// 
-			this->btnBrowse->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(70)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(70)), static_cast<System::Int32>(static_cast<System::Byte>(75)));
+			this->btnBrowse->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(70)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(75)));
 			this->btnBrowse->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->btnBrowse->FlatAppearance->BorderSize = 0;
 			this->btnBrowse->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -90,7 +90,7 @@ namespace ClothingDetectionApp {
 			this->btnBrowse->Name = L"btnBrowse";
 			this->btnBrowse->Size = System::Drawing::Size(420, 45);
 			this->btnBrowse->TabIndex = 0;
-			this->btnBrowse->Text = L"?? Browse Folder";
+			this->btnBrowse->Text = L"\?\? Browse Folder";
 			this->btnBrowse->UseVisualStyleBackColor = false;
 			this->btnBrowse->Click += gcnew System::EventHandler(this, &SelectDirectoryForm::btnBrowse_Click);
 			this->btnBrowse->MouseEnter += gcnew System::EventHandler(this, &SelectDirectoryForm::btnBrowse_MouseEnter);
@@ -98,8 +98,8 @@ namespace ClothingDetectionApp {
 			// 
 			// btnConfirm
 			// 
-			this->btnConfirm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(122)), static_cast<System::Int32>(static_cast<System::Byte>(204)));
+			this->btnConfirm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(122)),
+				static_cast<System::Int32>(static_cast<System::Byte>(204)));
 			this->btnConfirm->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->btnConfirm->FlatAppearance->BorderSize = 0;
 			this->btnConfirm->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -109,7 +109,7 @@ namespace ClothingDetectionApp {
 			this->btnConfirm->Name = L"btnConfirm";
 			this->btnConfirm->Size = System::Drawing::Size(180, 50);
 			this->btnConfirm->TabIndex = 1;
-			this->btnConfirm->Text = L"? Start Camera";
+			this->btnConfirm->Text = L"\? Start Camera";
 			this->btnConfirm->UseVisualStyleBackColor = false;
 			this->btnConfirm->Click += gcnew System::EventHandler(this, &SelectDirectoryForm::btnConfirm_Click);
 			this->btnConfirm->MouseEnter += gcnew System::EventHandler(this, &SelectDirectoryForm::btnConfirm_MouseEnter);
@@ -122,14 +122,15 @@ namespace ClothingDetectionApp {
 			this->lblTitle->ForeColor = System::Drawing::Color::White;
 			this->lblTitle->Location = System::Drawing::Point(90, 20);
 			this->lblTitle->Name = L"lblTitle";
-			this->lblTitle->Size = System::Drawing::Size(330, 37);
+			this->lblTitle->Size = System::Drawing::Size(309, 37);
 			this->lblTitle->TabIndex = 2;
-			this->lblTitle->Text = L"?? Setup Photo Session";
+			this->lblTitle->Text = L"\?\? Setup Photo Session";
+			this->lblTitle->Click += gcnew System::EventHandler(this, &SelectDirectoryForm::lblTitle_Click);
 			// 
 			// txtFolderName
 			// 
-			this->txtFolderName->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(60)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(60)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
+			this->txtFolderName->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(60)), static_cast<System::Int32>(static_cast<System::Byte>(60)),
+				static_cast<System::Int32>(static_cast<System::Byte>(65)));
 			this->txtFolderName->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->txtFolderName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12));
 			this->txtFolderName->ForeColor = System::Drawing::Color::White;
@@ -143,19 +144,19 @@ namespace ClothingDetectionApp {
 			// 
 			this->lblFolderName->AutoSize = true;
 			this->lblFolderName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Bold));
-			this->lblFolderName->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(200)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(200)), static_cast<System::Int32>(static_cast<System::Byte>(200)));
+			this->lblFolderName->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(200)), static_cast<System::Int32>(static_cast<System::Byte>(200)),
+				static_cast<System::Int32>(static_cast<System::Byte>(200)));
 			this->lblFolderName->Location = System::Drawing::Point(36, 200);
 			this->lblFolderName->Name = L"lblFolderName";
-			this->lblFolderName->Size = System::Drawing::Size(228, 23);
+			this->lblFolderName->Size = System::Drawing::Size(225, 23);
 			this->lblFolderName->TabIndex = 4;
-			this->lblFolderName->Text = L"?? Enter New Folder Name:";
+			this->lblFolderName->Text = L"\?\? Enter New Folder Name:";
 			// 
 			// lblSelectedPath
 			// 
 			this->lblSelectedPath->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9));
-			this->lblSelectedPath->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(150)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(150)), static_cast<System::Int32>(static_cast<System::Byte>(150)));
+			this->lblSelectedPath->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(150)), static_cast<System::Int32>(static_cast<System::Byte>(150)),
+				static_cast<System::Int32>(static_cast<System::Byte>(150)));
 			this->lblSelectedPath->Location = System::Drawing::Point(40, 95);
 			this->lblSelectedPath->Name = L"lblSelectedPath";
 			this->lblSelectedPath->Size = System::Drawing::Size(420, 35);
@@ -165,8 +166,8 @@ namespace ClothingDetectionApp {
 			// 
 			// mainPanel
 			// 
-			this->mainPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(48)));
+			this->mainPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
+				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->mainPanel->Controls->Add(this->lblSelectedPath);
 			this->mainPanel->Controls->Add(this->lblFolderName);
 			this->mainPanel->Controls->Add(this->txtFolderName);
@@ -181,8 +182,8 @@ namespace ClothingDetectionApp {
 			// 
 			// headerPanel
 			// 
-			this->headerPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			this->headerPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)));
 			this->headerPanel->Controls->Add(this->lblTitle);
 			this->headerPanel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->headerPanel->Location = System::Drawing::Point(0, 0);
@@ -194,8 +195,8 @@ namespace ClothingDetectionApp {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)));
 			this->ClientSize = System::Drawing::Size(500, 460);
 			this->Controls->Add(this->mainPanel);
 			this->Controls->Add(this->headerPanel);
@@ -325,5 +326,7 @@ namespace ClothingDetectionApp {
 	private: System::Void btnConfirm_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		btnConfirm->BackColor = Color::FromArgb(0, 122, 204);
 	}
+private: System::Void lblTitle_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
