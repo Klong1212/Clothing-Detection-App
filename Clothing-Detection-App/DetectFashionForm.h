@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 namespace ClothingDetectionApp {
-
+	using namespace System::Drawing::Drawing2D;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -14,29 +14,23 @@ namespace ClothingDetectionApp {
 	using System::String;
 	using System::Exception;
 
-	/// <summary>
-	/// Summary for DetectFashionForm
-	/// </summary>
 	public ref class DetectFashionForm : public System::Windows::Forms::Form
 	{
 	private:
 		String^ currentFilePath;
 	public:
-		// ต้องมี Constructor นี้เพิ่มเข้ามา
 		DetectFashionForm(System::String^ imagePath)
 		{
 			InitializeComponent();
 			this->currentFilePath = imagePath;
-			// นำ imagePath ไปใช้งาน เช่น แสดงรูปใน PictureBox
+			ApplyModernStyling();
+			
 			if (System::IO::File::Exists(imagePath)) {
 				this->pbOriginal->Image = Image::FromFile(imagePath);
 			}
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~DetectFashionForm()
 		{
 			if (components)
@@ -44,65 +38,202 @@ namespace ClothingDetectionApp {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::Button^ btnUpload;
-	protected:
 	private: System::Windows::Forms::PictureBox^ pbOriginal;
 	private: System::Windows::Forms::PictureBox^ pbResult;
-
+	private: System::Windows::Forms::Panel^ headerPanel;
+	private: System::Windows::Forms::Label^ lblTitle;
+	private: System::Windows::Forms::Label^ lblOriginal;
+	private: System::Windows::Forms::Label^ lblResult;
+	private: System::Windows::Forms::Label^ lblStatus;
+	private: System::Windows::Forms::Panel^ leftPanel;
+	private: System::Windows::Forms::Panel^ rightPanel;
+	private: System::Windows::Forms::Panel^ mainPanel;
+	private: System::Windows::Forms::ProgressBar^ progressBar1;
 	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
-
-	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		System::ComponentModel::Container^ components;
-
+	private: System::ComponentModel::Container^ components;
 	private: literal String^ ApiUrl = "http://127.0.0.1:8000/segment";
 
 #pragma region Windows Form Designer generated code
-		   /// <summary>
-		   /// Required method for Designer support - do not modify
-		   /// the contents of this method with the code editor.
-		   /// </summary>
 		   void InitializeComponent(void)
 		   {
 			   this->btnUpload = (gcnew System::Windows::Forms::Button());
 			   this->pbOriginal = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbResult = (gcnew System::Windows::Forms::PictureBox());
+			   this->headerPanel = (gcnew System::Windows::Forms::Panel());
+			   this->lblStatus = (gcnew System::Windows::Forms::Label());
+			   this->lblTitle = (gcnew System::Windows::Forms::Label());
+			   this->leftPanel = (gcnew System::Windows::Forms::Panel());
+			   this->lblOriginal = (gcnew System::Windows::Forms::Label());
+			   this->rightPanel = (gcnew System::Windows::Forms::Panel());
+			   this->lblResult = (gcnew System::Windows::Forms::Label());
+			   this->mainPanel = (gcnew System::Windows::Forms::Panel());
+			   this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 			   this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbOriginal))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbResult))->BeginInit();
+			   this->headerPanel->SuspendLayout();
+			   this->leftPanel->SuspendLayout();
+			   this->rightPanel->SuspendLayout();
+			   this->mainPanel->SuspendLayout();
 			   this->SuspendLayout();
 			   // 
 			   // btnUpload
 			   // 
-			   this->btnUpload->Location = System::Drawing::Point(473, 56);
+			   this->btnUpload->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+			   this->btnUpload->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(122)), static_cast<System::Int32>(static_cast<System::Byte>(204)));
+			   this->btnUpload->Cursor = System::Windows::Forms::Cursors::Hand;
+			   this->btnUpload->FlatAppearance->BorderSize = 0;
+			   this->btnUpload->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->btnUpload->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
+			   this->btnUpload->ForeColor = System::Drawing::Color::White;
+			   this->btnUpload->Location = System::Drawing::Point(450, 720);
 			   this->btnUpload->Name = L"btnUpload";
-			   this->btnUpload->Size = System::Drawing::Size(192, 37);
+			   this->btnUpload->Size = System::Drawing::Size(250, 55);
 			   this->btnUpload->TabIndex = 0;
-			   this->btnUpload->Text = L"Process";
-			   this->btnUpload->UseVisualStyleBackColor = true;
+			   this->btnUpload->Text = L"🤖 Process Image";
+			   this->btnUpload->UseVisualStyleBackColor = false;
 			   this->btnUpload->Click += gcnew System::EventHandler(this, &DetectFashionForm::btnUpload_Click);
+			   this->btnUpload->MouseEnter += gcnew System::EventHandler(this, &DetectFashionForm::btnUpload_MouseEnter);
+			   this->btnUpload->MouseLeave += gcnew System::EventHandler(this, &DetectFashionForm::btnUpload_MouseLeave);
 			   // 
 			   // pbOriginal
 			   // 
-			   this->pbOriginal->Location = System::Drawing::Point(53, 123);
+			   this->pbOriginal->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			   this->pbOriginal->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->pbOriginal->Location = System::Drawing::Point(15, 50);
 			   this->pbOriginal->Name = L"pbOriginal";
-			   this->pbOriginal->Size = System::Drawing::Size(478, 451);
+			   this->pbOriginal->Size = System::Drawing::Size(515, 585);
 			   this->pbOriginal->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pbOriginal->TabIndex = 1;
 			   this->pbOriginal->TabStop = false;
-			   this->pbOriginal->Click += gcnew System::EventHandler(this, &DetectFashionForm::pbOriginal_Click);
 			   // 
 			   // pbResult
 			   // 
-			   this->pbResult->Location = System::Drawing::Point(596, 123);
+			   this->pbResult->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			   this->pbResult->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->pbResult->Location = System::Drawing::Point(15, 50);
 			   this->pbResult->Name = L"pbResult";
-			   this->pbResult->Size = System::Drawing::Size(465, 451);
+			   this->pbResult->Size = System::Drawing::Size(515, 585);
 			   this->pbResult->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pbResult->TabIndex = 2;
 			   this->pbResult->TabStop = false;
-			   this->pbResult->Click += gcnew System::EventHandler(this, &DetectFashionForm::pbResult_Click);
+			   // 
+			   // headerPanel
+			   // 
+			   this->headerPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			   this->headerPanel->Controls->Add(this->lblStatus);
+			   this->headerPanel->Controls->Add(this->lblTitle);
+			   this->headerPanel->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->headerPanel->Location = System::Drawing::Point(0, 0);
+			   this->headerPanel->Name = L"headerPanel";
+			   this->headerPanel->Size = System::Drawing::Size(1150, 80);
+			   this->headerPanel->TabIndex = 3;
+			   // 
+			   // lblStatus
+			   // 
+			   this->lblStatus->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			   this->lblStatus->AutoSize = true;
+			   this->lblStatus->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
+			   this->lblStatus->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(150)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(150)), static_cast<System::Int32>(static_cast<System::Byte>(150)));
+			   this->lblStatus->Location = System::Drawing::Point(920, 30);
+			   this->lblStatus->Name = L"lblStatus";
+			   this->lblStatus->Size = System::Drawing::Size(200, 23);
+			   this->lblStatus->TabIndex = 1;
+			   this->lblStatus->Text = L"Ready to process";
+			   // 
+			   // lblTitle
+			   // 
+			   this->lblTitle->AutoSize = true;
+			   this->lblTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold));
+			   this->lblTitle->ForeColor = System::Drawing::Color::White;
+			   this->lblTitle->Location = System::Drawing::Point(25, 22);
+			   this->lblTitle->Name = L"lblTitle";
+			   this->lblTitle->Size = System::Drawing::Size(380, 41);
+			   this->lblTitle->TabIndex = 0;
+			   this->lblTitle->Text = L"🔍 Fashion Detection AI";
+			   // 
+			   // leftPanel
+			   // 
+			   this->leftPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(48)));
+			   this->leftPanel->Controls->Add(this->pbOriginal);
+			   this->leftPanel->Controls->Add(this->lblOriginal);
+			   this->leftPanel->Location = System::Drawing::Point(20, 20);
+			   this->leftPanel->Name = L"leftPanel";
+			   this->leftPanel->Padding = System::Windows::Forms::Padding(15, 50, 15, 15);
+			   this->leftPanel->Size = System::Drawing::Size(545, 650);
+			   this->leftPanel->TabIndex = 4;
+			   // 
+			   // lblOriginal
+			   // 
+			   this->lblOriginal->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(122)), static_cast<System::Int32>(static_cast<System::Byte>(204)));
+			   this->lblOriginal->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->lblOriginal->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
+			   this->lblOriginal->ForeColor = System::Drawing::Color::White;
+			   this->lblOriginal->Location = System::Drawing::Point(15, 0);
+			   this->lblOriginal->Name = L"lblOriginal";
+			   this->lblOriginal->Size = System::Drawing::Size(515, 50);
+			   this->lblOriginal->TabIndex = 0;
+			   this->lblOriginal->Text = L"📷 Original Image";
+			   this->lblOriginal->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   // 
+			   // rightPanel
+			   // 
+			   this->rightPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(48)));
+			   this->rightPanel->Controls->Add(this->pbResult);
+			   this->rightPanel->Controls->Add(this->lblResult);
+			   this->rightPanel->Location = System::Drawing::Point(585, 20);
+			   this->rightPanel->Name = L"rightPanel";
+			   this->rightPanel->Padding = System::Windows::Forms::Padding(15, 50, 15, 15);
+			   this->rightPanel->Size = System::Drawing::Size(545, 650);
+			   this->rightPanel->TabIndex = 5;
+			   // 
+			   // lblResult
+			   // 
+			   this->lblResult->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(204)), static_cast<System::Int32>(static_cast<System::Byte>(113)));
+			   this->lblResult->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->lblResult->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
+			   this->lblResult->ForeColor = System::Drawing::Color::White;
+			   this->lblResult->Location = System::Drawing::Point(15, 0);
+			   this->lblResult->Name = L"lblResult";
+			   this->lblResult->Size = System::Drawing::Size(515, 50);
+			   this->lblResult->TabIndex = 0;
+			   this->lblResult->Text = L"✨ Processed Result";
+			   this->lblResult->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   // 
+			   // mainPanel
+			   // 
+			   this->mainPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			   this->mainPanel->Controls->Add(this->leftPanel);
+			   this->mainPanel->Controls->Add(this->rightPanel);
+			   this->mainPanel->Controls->Add(this->btnUpload);
+			   this->mainPanel->Controls->Add(this->progressBar1);
+			   this->mainPanel->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->mainPanel->Location = System::Drawing::Point(0, 80);
+			   this->mainPanel->Name = L"mainPanel";
+			   this->mainPanel->Size = System::Drawing::Size(1150, 820);
+			   this->mainPanel->TabIndex = 6;
+			   // 
+			   // progressBar1
+			   // 
+			   this->progressBar1->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+			   this->progressBar1->Location = System::Drawing::Point(350, 795);
+			   this->progressBar1->Name = L"progressBar1";
+			   this->progressBar1->Size = System::Drawing::Size(450, 10);
+			   this->progressBar1->Style = System::Windows::Forms::ProgressBarStyle::Marquee;
+			   this->progressBar1->TabIndex = 1;
+			   this->progressBar1->Visible = false;
 			   // 
 			   // backgroundWorker1
 			   // 
@@ -113,88 +244,116 @@ namespace ClothingDetectionApp {
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(1110, 627);
-			   this->Controls->Add(this->pbResult);
-			   this->Controls->Add(this->pbOriginal);
-			   this->Controls->Add(this->btnUpload);
+			   this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), 
+				   static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			   this->ClientSize = System::Drawing::Size(1150, 900);
+			   this->Controls->Add(this->mainPanel);
+			   this->Controls->Add(this->headerPanel);
+			   this->MinimumSize = System::Drawing::Size(1000, 700);
 			   this->Name = L"DetectFashionForm";
-			   this->Text = L"DetectFashionForm";
+			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			   this->Text = L"Fashion Detection - AI Processing";
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbOriginal))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbResult))->EndInit();
+			   this->headerPanel->ResumeLayout(false);
+			   this->headerPanel->PerformLayout();
+			   this->leftPanel->ResumeLayout(false);
+			   this->rightPanel->ResumeLayout(false);
+			   this->mainPanel->ResumeLayout(false);
 			   this->ResumeLayout(false);
-
 		   }
 #pragma endregion
-		   // 1. ปุ่มกด Upload: แค่สั่งให้ Worker เริ่มทำงาน
-	private: System::Void btnUpload_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		// เช็คก่อนว่ามีไฟล์ส่งมาหรือไม่
+	private: void ApplyModernStyling() {
+		MakeButtonRounded(btnUpload, 12);
+	}
+
+	private: void MakeButtonRounded(Button^ button, int radius) {
+		GraphicsPath^ path = gcnew GraphicsPath();
+		System::Drawing::Rectangle rect = System::Drawing::Rectangle(0, 0, button->Width, button->Height);
+		
+		int diameter = radius * 2;
+		System::Drawing::Size size = System::Drawing::Size(diameter, diameter);
+		System::Drawing::Rectangle arc = System::Drawing::Rectangle(rect.Location, size);
+		
+		path->AddArc(arc, 180, 90);
+		arc.X = rect.Right - diameter;
+		path->AddArc(arc, 270, 90);
+		arc.Y = rect.Bottom - diameter;
+		path->AddArc(arc, 0, 90);
+		arc.X = rect.Left;
+		path->AddArc(arc, 90, 90);
+		
+		path->CloseFigure();
+		button->Region = gcnew System::Drawing::Region(path);
+	}
+
+	private: System::Void btnUpload_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (String::IsNullOrEmpty(this->currentFilePath) || !File::Exists(this->currentFilePath)) {
-			MessageBox::Show("No image received from Inventory!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("No image received from Inventory!", "❌ Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
 
-		// เตรียมหน้าจอ
 		pbResult->Image = nullptr;
 		btnUpload->Enabled = false;
-		btnUpload->Text = "Processing...";
+		btnUpload->Text = L"⏳ Processing...";
+		progressBar1->Visible = true;
+		lblStatus->Text = L"Processing image...";
+		lblStatus->ForeColor = Color::FromArgb(255, 193, 7);
 
-		// ส่ง path เดิมไปประมวลผลเลย (ไม่ต้องเปิด OpenFileDialog)
 		backgroundWorker1->RunWorkerAsync(this->currentFilePath);
 	}
-	private: System::Void pbOriginal_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void pbResult_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-		   // 2. DoWork: ทำงานหนักๆ (เชื่อมต่อ Server) ตรงนี้ *ห้ามแตะ UI*
+
 	private: System::Void backgroundWorker1_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e) {
-		// รับ filePath ที่ส่งมา
 		String^ filePath = safe_cast<String^>(e->Argument);
 
 		try {
 			HttpClient^ client = gcnew HttpClient();
-			// เพิ่ม Reference System.Net.Http ก่อนนะครับ ถึงจะใช้บรรทัดนี้ได้
-
 			MultipartFormDataContent^ form = gcnew MultipartFormDataContent();
 			FileStream^ fs = File::OpenRead(filePath);
 			StreamContent^ fileContent = gcnew StreamContent(fs);
 
 			form->Add(fileContent, "file", Path::GetFileName(filePath));
 
-			// ส่งข้อมูล (Synchronous ได้เลยเพราะอยู่ใน BackgroundWorker แล้ว)
 			HttpResponseMessage^ response = client->PostAsync("http://127.0.0.1:8000/segment", form)->Result;
 			response->EnsureSuccessStatusCode();
 
-			// อ่านผลลัพธ์
 			Stream^ returnStream = response->Content->ReadAsStreamAsync()->Result;
-
-			// ส่งผลลัพธ์ (รูปภาพ) ไปให้ฟังก์ชันจบ
 			e->Result = Image::FromStream(returnStream);
 
-			// ปิดไฟล์
 			fs->Close();
 		}
 		catch (Exception^ ex) {
-			// ถ้า error ให้ส่ง error message ไปแทน
 			e->Result = ex;
 		}
 	}
-		   // 3. RunWorkerCompleted: งานเสร็จแล้ว อัปเดตหน้าจอตรงนี้
+
 	private: System::Void backgroundWorker1_RunWorkerCompleted(System::Object^ sender, System::ComponentModel::RunWorkerCompletedEventArgs^ e) {
-		// ตรวจสอบว่าผลลัพธ์เป็น Error หรือ รูปภาพ
+		progressBar1->Visible = false;
+		
 		if (e->Result->GetType() == Exception::typeid) {
 			Exception^ ex = safe_cast<Exception^>(e->Result);
-			MessageBox::Show("Error: " + ex->Message);
+			MessageBox::Show("Error: " + ex->Message, "❌ Processing Failed", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			lblStatus->Text = L"❌ Processing failed";
+			lblStatus->ForeColor = Color::FromArgb(231, 76, 60);
 		}
 		else {
-			// เอารูปมาแสดง
 			Image^ processedImage = safe_cast<Image^>(e->Result);
 			pbResult->Image = processedImage;
+			lblStatus->Text = L"✅ Processing completed successfully!";
+			lblStatus->ForeColor = Color::FromArgb(46, 204, 113);
 		}
 
-		// คืนค่าปุ่ม
 		btnUpload->Enabled = true;
-		btnUpload->Text = "Upload & Process";
+		btnUpload->Text = L"🤖 Process Image";
+	}
+
+	private: System::Void btnUpload_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		btnUpload->BackColor = Color::FromArgb(0, 140, 230);
+	}
+
+	private: System::Void btnUpload_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		btnUpload->BackColor = Color::FromArgb(0, 122, 204);
 	}
 	};
 }
